@@ -1,0 +1,115 @@
+/* --- GLOBAL MOBILE MENU --- */
+
+/* The hamburger button */
+.mobile-menu-btn {
+    display: none;
+    background: transparent;
+    border: none;
+    color: var(--gold-primary, #D4AF37);
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    z-index: 10002;
+    position: relative;
+    padding: 0;
+    margin-left: 10px;
+}
+
+.mobile-menu-btn svg {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.3s ease;
+}
+
+.mobile-menu-btn.open svg {
+    transform: rotate(90deg);
+}
+
+.mobile-menu-btn.open .line1 { opacity: 0; }
+.mobile-menu-btn.open .line2 { transform: translateY(6px) rotate(45deg); transform-origin: center; }
+.mobile-menu-btn.open .line3 { transform: translateY(-6px) rotate(-45deg); transform-origin: center; }
+
+/* The dark overlay behind the menu */
+.mobile-menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 10000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.mobile-menu-overlay.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Ensure mobile rules only apply on small screens */
+@media (max-width: 850px) {
+    .mobile-menu-btn {
+        display: block !important;
+    }
+    
+    .nav-menu-wrapper {
+        position: fixed !important;
+        top: 0 !important;
+        right: -100% !important;
+        width: 80% !important;
+        max-width: 350px !important;
+        height: 100vh !important;
+        background: rgba(10, 10, 10, 0.98) !important;
+        backdrop-filter: blur(20px) !important;
+        -webkit-backdrop-filter: blur(20px) !important;
+        border-left: 1px solid rgba(212, 175, 55, 0.2) !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: flex-start !important;
+        align-items: center !important;
+        transition: right 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+        z-index: 10001 !important;
+        padding-top: 100px !important;
+        box-shadow: -5px 0 30px rgba(0,0,0,0.8) !important;
+        margin: 0 !important;
+    }
+    
+    .nav-menu-wrapper.open {
+        right: 0 !important;
+    }
+    
+    .nav-links {
+        position: static !important;
+        transform: none !important;
+        flex-direction: column !important;
+        display: flex !important;
+        gap: 2.5rem !important;
+        text-align: center !important;
+        margin-bottom: 4rem !important;
+        width: 100% !important;
+        left: auto !important;
+    }
+    
+    .nav-links a {
+        font-size: 1.3rem !important;
+        letter-spacing: 2px !important;
+        display: block !important;
+        width: 100% !important;
+        padding: 10px 0 !important;
+    }
+    
+    .lang-tog-wrapper {
+        display: flex !important;
+        justify-content: center !important;
+        width: 100% !important;
+        margin-top: auto !important;
+        margin-bottom: 50px !important;
+    }
+    
+    .lang-tog {
+        transform: scale(1.2) !important;
+    }
+}
