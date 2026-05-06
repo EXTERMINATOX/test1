@@ -1246,3 +1246,18 @@ textarea.fi { resize: vertical; min-height: 80px; }
 }
 
 
+
+/* --- GLOBAL MOBILE RESPONSIVENESS FIXES --- */
+@media (max-width: 850px) {
+    html, body { overflow-x: hidden !important; width: 100vw !important; max-width: 100vw !important; }
+    .overlay { padding: 10px !important; align-items: center !important; justify-content: center !important; }
+    .modal { width: 100% !important; max-width: 100% !important; margin: 0 !important; border-radius: 12px !important; max-height: 90vh !important; }
+    .modal-bd { padding: 15px !important; }
+    .fgrid { grid-template-columns: 1fr !important; gap: 15px !important; }
+    .pay-btn-row { flex-direction: column !important; gap: 10px !important; }
+    .bundle-row { flex-direction: column !important; align-items: flex-start !important; gap: 15px !important; }
+    .bundle-stepper { width: 100% !important; justify-content: space-between !important; }
+    #mcp-interac-box, .success { width: 95% !important; margin: 0 auto !important; padding: 15px !important; }
+    #mcp-int-email { word-wrap: break-word !important; word-break: break-all !important; }
+    .packs-grid { grid-template-columns: 1fr !important; padding: 0 10px !important; }
+}
