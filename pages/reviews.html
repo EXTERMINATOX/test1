@@ -270,81 +270,9 @@ textarea.fi{resize:vertical;min-height:90px;}
 .lb.active { background:#D4AF37; color:#000; box-shadow:0 0 10px rgba(212,175,55,0.4); }
 
 
-/* --- MOBILE MENU --- */
-.mobile-menu-btn {
-    display: none;
-    background: transparent;
-    border: none;
-    color: var(--gold-primary, #D4AF37);
-    width: 32px;
-    height: 32px;
-    cursor: pointer;
-    z-index: 1002;
-    position: relative;
-}
-
-.mobile-menu-btn svg {
-    width: 100%;
-    height: 100%;
-    transition: transform 0.3s ease;
-}
-
-.mobile-menu-btn.open svg {
-    transform: rotate(90deg);
-}
-
-.mobile-menu-btn.open .line1 { opacity: 0; }
-.mobile-menu-btn.open .line2 { transform: translateY(6px) rotate(45deg); transform-origin: center; }
-.mobile-menu-btn.open .line3 { transform: translateY(-6px) rotate(-45deg); transform-origin: center; }
-
-@media (max-width: 850px) {
-    .mobile-menu-btn {
-        display: block;
-    }
-    
-    .nav-menu-wrapper {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 100%;
-        height: 100vh;
-        background: rgba(5, 5, 5, 0.98);
-        backdrop-filter: blur(15px);
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        transition: right 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        z-index: 1000;
-    }
-    
-    .nav-menu-wrapper.open {
-        right: 0;
-    }
-    
-    .nav-links {
-        position: static;
-        transform: none;
-        flex-direction: column;
-        display: flex !important;
-        gap: 2rem;
-        text-align: center;
-        margin-bottom: 3rem;
-    }
-    
-    .nav-links a {
-        font-size: 1.4rem;
-        letter-spacing: 2px;
-    }
-    
-    .lang-tog-wrapper {
-        display: flex;
-        justify-content: center;
-        width: 100%;
-    }
-}
 
 </style>
+    <link rel="stylesheet" href="../mobile-menu.css">
 </head>
 <body>
 
@@ -552,6 +480,7 @@ textarea.fi{resize:vertical;min-height:90px;}
 
     <!-- NAVIGATION -->
                 <nav class="navbar">
+        <div class="mobile-menu-overlay" id="mobileOverlay" onclick="toggleMobileMenu()"></div>
         <a href="../index.html" class="logo" style="text-decoration:none;">
             <div class="logo-name" id="h-logo-name" style="color:var(--gold-primary, #D4AF37);">PROP CANADA</div>
             <div class="logo-sub" id="h-logo-sub" style="font-size:0.6rem;color:var(--text-muted, #a0a0a0);letter-spacing:2px;text-transform:uppercase;">Premium Custom Currency</div>
@@ -1120,12 +1049,6 @@ function setLang(l){
 
         <script>
 
-function toggleMobileMenu() {
-    const menu = document.getElementById("navMenu");
-    const btn = document.querySelector(".mobile-menu-btn");
-    if(menu) menu.classList.toggle("open");
-    if(btn) btn.classList.toggle("open");
-}
 
         document.addEventListener("DOMContentLoaded", () => {
             const canvas = document.getElementById("gold-dust");
@@ -1169,5 +1092,6 @@ function toggleMobileMenu() {
         </script>
         
   <script src="../config.js"></script>
+    <script src="../mobile-menu.js"></script>
 </body>
 </html>

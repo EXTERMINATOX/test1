@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="mobile-menu.css">
 </head>
 <body>
 
@@ -102,6 +103,7 @@
 
     <!-- En-tête avec vidéo en arrière-plan -->
             <nav class="navbar">
+        <div class="mobile-menu-overlay" id="mobileOverlay" onclick="toggleMobileMenu()"></div>
                 <a href="index.html" class="logo" style="text-decoration:none;">
             <div class="logo-name" id="h-logo-name" style="color:var(--gold-primary, #D4AF37);">PROP CANADA</div>
             <div class="logo-sub" id="h-logo-sub" style="font-size:0.6rem;color:var(--text-muted, #a0a0a0);letter-spacing:2px;text-transform:uppercase;">Premium Custom Currency</div>
@@ -537,5 +539,6 @@
 
     <script src="assets/js/reviews-data.js"></script>
     <script src="script.js"></script>
+    <script src="mobile-menu.js"></script>
 </body>
 </html>
