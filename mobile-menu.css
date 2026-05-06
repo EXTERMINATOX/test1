@@ -49,36 +49,57 @@
     visibility: visible;
 }
 
-/* Ensure mobile rules only apply on small screens */
+/* ============================================================
+   MOBILE RULES — max-width: 850px
+   ============================================================ */
 @media (max-width: 850px) {
+
+    /* 1. Prevent the entire page from scrolling sideways */
+    html {
+        overflow-x: hidden !important;
+    }
+    body {
+        overflow-x: hidden !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        position: relative !important;
+    }
+
+    /* 2. Show hamburger button */
     .mobile-menu-btn {
         display: block !important;
     }
-    
+
+    /* 3. Nav menu panel — starts translated OFF screen to the right.
+          Using transform (not right:-100%) so overflow-x:hidden on <html>
+          properly clips it and it is invisible when closed. */
     .nav-menu-wrapper {
         position: fixed !important;
         top: 0 !important;
-        right: -100% !important;
+        right: 0 !important;
         width: 80% !important;
-        max-width: 350px !important;
+        max-width: 320px !important;
         height: 100vh !important;
-        background: rgba(10, 10, 10, 0.98) !important;
+        background: rgba(8, 8, 8, 0.98) !important;
         backdrop-filter: blur(20px) !important;
         -webkit-backdrop-filter: blur(20px) !important;
-        border-left: 1px solid rgba(212, 175, 55, 0.2) !important;
+        border-left: 1px solid rgba(212, 175, 55, 0.25) !important;
         display: flex !important;
         flex-direction: column !important;
         justify-content: flex-start !important;
         align-items: center !important;
-        transition: right 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
-        z-index: 10001 !important;
-        padding-top: 100px !important;
-        box-shadow: -5px 0 30px rgba(0,0,0,0.8) !important;
+        padding-top: 90px !important;
+        box-shadow: -8px 0 40px rgba(0, 0, 0, 0.9) !important;
         margin: 0 !important;
+        z-index: 10001 !important;
+        /* KEY FIX: start off-screen via transform, NOT via right:-100% */
+        transform: translateX(100%) !important;
+        transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
     }
-    
+
+    /* 4. Panel slides in when open */
     .nav-menu-wrapper.open {
-        right: 0 !important;
+        transform: translateX(0) !important;
     }
     
     .nav-links {
