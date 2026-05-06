@@ -149,3 +149,45 @@
     #mcp-int-email { word-wrap: break-word !important; word-break: break-all !important; }
     .packs-grid { grid-template-columns: 1fr !important; padding: 0 10px !important; }
 }
+
+/* ============================================================
+   MOBILE TOOLTIP FIX — Centered popup on small screens
+   Touch the ? icon: the tooltip appears fixed & centered.
+   Desktop is completely unaffected.
+   ============================================================ */
+@media (max-width: 850px) {
+    /* Override the absolute positioning to a centered fixed panel */
+    .tooltip-box {
+        position: fixed !important;
+        /* Center horizontally */
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        /* Position in the upper-middle area of the screen */
+        top: 80px !important;
+        bottom: auto !important;
+        /* Cap width so it never touches screen edges */
+        width: 90vw !important;
+        max-width: 340px !important;
+        /* Reset the desktop entrance animation offset */
+        transition: opacity 0.25s ease, visibility 0.25s ease !important;
+        z-index: 99999 !important;
+    }
+
+    /* When open (toggled by JS on tap), make it visible */
+    .tooltip-box.open {
+        visibility: visible !important;
+        opacity: 1 !important;
+        transform: translateX(-50%) !important;
+    }
+
+    /* Remove the bottom arrow — it points nowhere in fixed mode */
+    .tooltip-box::after {
+        display: none !important;
+    }
+
+    /* Make the ? icon respond to tap instead of hover */
+    .tooltip-container:hover .tooltip-box {
+        visibility: hidden !important;
+        opacity: 0 !important;
+    }
+}

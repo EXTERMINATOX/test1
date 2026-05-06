@@ -734,11 +734,11 @@ img {
       <div class="hero-card-title" id="hc-title">At a Glance</div>
       <div class="hc-rows">
         <div class="hc-row"><div class="hc-ico"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="3"/></svg></div><div><div class="hc-name" id="hc1n">BOPP Polymer Substrate</div><div class="hc-val" id="hc1v">Identical feel and snap to genuine bills</div></div></div>
-        <div class="hc-row"><div class="hc-ico"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.85"/></svg></div><div><div class="hc-name" id="hc2n">Multi-Layer UV Printing</div><div class="hc-val" id="hc2v">Intaglio-simulation relief, never flakes</div></div></div>
+        <div class="hc-row"><div class="hc-ico"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.85"/></svg></div><div><div class="hc-name" id="hc2n">UV-Transparent Inks</div><div class="hc-val" id="hc2v">Stays dark under blacklight — just like a real bill</div></div></div>
         <div class="hc-row"><div class="hc-ico"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><div><div class="hc-name" id="hc3n">Dual-Side Hologram</div><div class="hc-val" id="hc3v">Gold-to-emerald colour shift by angle</div></div></div>
         <div class="hc-row"><div class="hc-ico"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div><div><div class="hc-name" id="hc4n">Micro-text Under 10x</div><div class="hc-val" id="hc4v">Sharp and legible, no blur</div></div></div>
         <div class="hc-row"><div class="hc-ico"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div><div class="hc-name" id="hc5n">Functional Braille</div><div class="hc-val" id="hc5v">Raised dots — industry-exclusive feature</div></div></div>
-        <div class="hc-row"><div class="hc-ico"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div><div class="hc-name" id="hc6n">Field-Tested &amp; Validated</div><div class="hc-val" id="hc6v">Water, UV and durability tests every batch</div></div></div>
+        <div class="hc-row"><div class="hc-ico"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div><div class="hc-name" id="hc6n">Field-Tested &amp; Validated</div><div class="hc-val" id="hc6v">Water, blacklight and durability tests every batch</div></div></div>
       </div>
     </div>
   </div>
@@ -801,7 +801,7 @@ img {
         <p id="qb-p">Every element — from the polymer substrate to the micro-text in the borders — is reproduced with the same precision as the original. Not a photocopy, not a novelty item. A professional prop tool built for demanding productions that require absolute visual authenticity on camera.</p>
         <div class="qb-tags">
           <span class="qb-tag" id="qt1">Polymer BOPP substrate</span>
-          <span class="qb-tag" id="qt2">UV-cured ink</span>
+          <span class="qb-tag" id="qt2">UV Transparent</span>
           <span class="qb-tag" id="qt3">Raised intaglio print</span>
           <span class="qb-tag" id="qt4">Dual hologram</span>
           <span class="qb-tag" id="qt5">Functional Braille</span>
@@ -913,10 +913,14 @@ img {
 
   <!-- UV SLIDER -->
   <div class="glass-sec reveal">
-    <div class="sec-eye">Ultraviolet Reaction</div>
-    <div class="sec-title">Security Features Under UV</div>
+    <div class="sec-eye">🔦 Blacklight Behaviour</div>
+    <div class="sec-title" id="uv-sec-title">Real Bills Don't Glow. Neither Does Ours.</div>
     <div class="sec-rule"></div>
-    <p class="sec-desc" style="margin-bottom:20px;">Drag the slider to see how our proprietary UV-cured inks react under 365nm ultraviolet light.</p>
+    <div style="background:rgba(212,175,55,0.06); border:1px solid rgba(212,175,55,0.2); border-radius:12px; padding:24px; margin-bottom:28px;">
+      <p class="sec-desc" id="uv-edu-p1" style="margin-bottom:16px; line-height:1.8;">Modern Canadian polymer banknotes contain <strong style="color:var(--gold-primary)">no UV-fluorescent ink</strong>. Under a 365nm blacklight, a genuine bill appears completely dark — this is by design, as the Bank of Canada removed UV security features when it transitioned to the polymer substrate.</p>
+      <p class="sec-desc" id="uv-edu-p2" style="margin-bottom:16px; line-height:1.8;">Cheap imitations produced with low-grade inks will <strong style="color:#ff6b6b">glow bright blue or white</strong> under UV — instantly exposing themselves as poor-quality reproductions. Our prop bills, however, use UV-transparent ink technology that produces <strong style="color:var(--gold-primary)">zero fluorescence</strong>.</p>
+      <p class="sec-desc" id="uv-edu-p3" style="line-height:1.8;"><strong style="color:var(--gold-primary)">With Prop Canada, your prop bill passes the blacklight test — because the real one does too.</strong></p>
+    </div>
     
     <div class="uv-slider-wrapper" style="position:relative; width:100%; max-width:900px; margin:0 auto; aspect-ratio:16/9; border-radius:12px; overflow:hidden; border:1px solid rgba(212, 175, 55, 0.2); box-shadow:0 10px 30px rgba(0,0,0,0.8);">
       <img src="../assets/images/100s1.jpg" alt="Normal Light" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; z-index:1;">
@@ -1063,14 +1067,14 @@ const T={
     hShop:"Order Now", hTg:"Questions? Telegram",
     hcTitle:"At a Glance",
     hc1n:"BOPP Polymer Substrate",hc1v:"Identical feel and snap to genuine bills",
-    hc2n:"Multi-Layer UV Printing",hc2v:"Intaglio-simulation relief, never flakes",
+    hc2n:"UV-Transparent Inks",hc2v:"Stays dark under blacklight — just like a real bill",
     hc3n:"Dual-Side Hologram",hc3v:"Gold-to-emerald colour shift by angle",
     hc4n:"Micro-text Under 10x",hc4v:"Sharp and legible, no blur",
     hc5n:"Functional Braille",hc5v:"Raised dots — industry-exclusive feature",
-    hc6n:"Field-Tested & Validated",hc6v:"Water, UV and durability tests every batch",
+    hc6n:"Field-Tested & Validated",hc6v:"Water, blacklight and durability tests every batch",
     qbH:"The Industry's Most Accurate 1:1 Prop Currency",
     qbP:"Every element — from the polymer substrate to the micro-text in the borders — is reproduced with the same precision as the original. Not a photocopy, not a novelty item. A professional prop tool built for demanding productions that require absolute visual authenticity on camera.",
-    qt1:"Polymer BOPP substrate",qt2:"UV-cured ink",qt3:"Raised intaglio print",qt4:"Dual hologram",qt5:"Functional Braille",qt6:"Batch-tested",
+    qt1:"Polymer BOPP substrate",qt2:"UV Transparent",qt3:"Raised intaglio print",qt4:"Dual hologram",qt5:"Functional Braille",qt6:"Batch-tested",
     photosEye:"Product Photos",photosTitle:"See It Up Close",
     photosDesc:"High-resolution close-up shots of our prop bills. See the print quality, hologram and texture before ordering.",
     adminPhotoHint:"Admin: Replace each placeholder box with your actual product photo using an <img> tag inside the div.",
@@ -1084,7 +1088,7 @@ const T={
     f2t:"Heat Resistant",f2d:"Designed to survive a full dryer cycle without melting, warping or losing shape. Built for the practical demands of on-set production environments.",f2tag:"Production Grade",
     printEye:"II. Printing",printTitle:"Multi-Layer & Intaglio Simulation",
     printDesc:"Not done in a single pass. A complex multi-stage layering process — the same approach used in professional security printing.",
-    f3t:"UV-Cured Ink",f3d:"Ultra-durable ultraviolet-cured inks that bond permanently to the substrate. Never flakes, cracks or fades.",f3tag:"Never Flakes",
+    f3t:"UV-Transparent Ink Technology",f3d:"Our UV-cured inks bond permanently to the substrate and contain no fluorescent agents — just like a real polymer bill. Under a blacklight, the bill stays completely dark. Cheap imitations glow and get caught. Ours never does.",f3tag:"Never Flakes · Blacklight-Safe",
     f4t:"Raised Intaglio-Style Relief",f4d:"Using thermal overprinting, dark areas have a palpable raised texture. Run your nail over the surface and feel the ridges — just like a genuine note.",f4tag:"Palpable Texture",
     f5t:"Micro-Characters",f5d:"Hidden micro-text in the borders stays sharp and legible under a 10x magnifying glass — zero blurring.",f5tag:"10x Magnifier-Ready",
     optEye:"III. Optics & Windows",optTitle:"Laser-Precision Security Elements",
@@ -1098,7 +1102,7 @@ const T={
     testEye:"V. Quality Validation",testTitle:"Field Tests — Every Batch",
     testDesc:"Before any batch ships, it goes through a rigorous battery of tests to ensure consistent quality, durability and performance on set.",
     tt1:"Water Immersion Test",td1:"12-hour full immersion. Ink remains intact. Bill stays dry after wiping — polymer substrate repels water as designed.",tr1:"Pass — 12h immersion",
-    tt2:"UV Light Test",td2:"Under 365nm UV, the bill stays dark (no paper glow), while fluorescent security fibres illuminate correctly.",tr2:"Pass — 365nm UV",
+    tt2:"Blacklight Test",td2:"Under 365nm UV, the bill stays completely dark — no glow, no fluorescence. This matches the genuine Canadian polymer bill exactly. Cheap prop bills often glow bright blue, instantly exposing them.",tr2:"Pass — Zero fluorescence",
     tt3:"Durability & Wear Test",td3:"Repeated handling, folding and friction testing. All elements intact after 500+ cycles — essential for multi-take shoots.",tr3:"Pass — 500+ cycles",
     diagEye:"Technical Diagram",diagTitle:"Security Features Breakdown",diagDesc:"An in-depth look at the security features implemented on our $20 prop note.",ctaH:"Ready to Order?",ctaP:"Choose your pack size, build your custom denomination mix, and receive the most realistic prop bills available.",
     ctaShop:"Shop Now",ctaTg:"Questions? Contact on Telegram"
@@ -1115,14 +1119,14 @@ const T={
     hShop:"Commander", hTg:"Questions ? Telegram",
     hcTitle:"En un coup d'œil",
     hc1n:"Substrat polymère BOPP",hc1v:"Toucher et snap identiques au vrai billet",
-    hc2n:"Impression multicouche UV",hc2v:"Relief intaglio simulé, ne s'écaille jamais",
+    hc2n:"Encres UV Transparentes",hc2v:"Reste sombre sous la lampe noire — comme un vrai billet",
     hc3n:"Hologramme double face",hc3v:"Variation or-émeraude selon l'angle",
     hc4n:"Micro-texte visible à 10x",hc4v:"Net et lisible, sans flou",
     hc5n:"Braille fonctionnel",hc5v:"Points en relief — exclusivité du marché",
-    hc6n:"Validé sur le terrain",hc6v:"Tests eau, UV et durabilité à chaque lot",
+    hc6n:"Validé sur le terrain",hc6v:"Tests eau, lampe noire et durabilité à chaque lot",
     qbH:"Le Billet de Prop 1:1 le Plus Précis du Secteur",
     qbP:"Chaque élément — du substrat polymère au micro-texte dans les bordures — est reproduit avec la même précision que l'original. Pas une photocopie, pas un gadget. Un accessoire de cinéma professionnel conçu pour les productions exigeantes qui requièrent une authenticité visuelle absolue.",
-    qt1:"Substrat polymère BOPP",qt2:"Encre séchage UV",qt3:"Impression relief intaglio",qt4:"Double hologramme",qt5:"Braille fonctionnel",qt6:"Testé par lot",
+    qt1:"Substrat polymère BOPP",qt2:"Encres UV Transparentes",qt3:"Impression relief intaglio",qt4:"Double hologramme",qt5:"Braille fonctionnel",qt6:"Testé par lot",
     photosEye:"Photos du produit",photosTitle:"Voyez de près",
     photosDesc:"Photos haute résolution en gros plan de nos billets de prop. Jugez la qualité d'impression, l'hologramme et la texture avant de commander.",
     adminPhotoHint:"Admin : Remplacez chaque case par votre photo avec une balise <img> à l'intérieur du div.",
@@ -1136,7 +1140,7 @@ const T={
     f2t:"Résistance Thermique",f2d:"Conçu pour survivre à un cycle complet de sécheuse sans fondre, se déformer ou perdre sa forme.",f2tag:"Grade production",
     printEye:"II. Impression",printTitle:"Multicouche & Simulation Intaglio",
     printDesc:"L'impression ne se fait pas en une seule passe. C'est un processus complexe de superposition par étages — la même approche utilisée en impression de sécurité professionnelle.",
-    f3t:"Encre UV-Cured",f3d:"Encres à séchage UV ultra-durables qui se lient définitivement au substrat. Ne s'écaille, ne craquelle et ne ternit jamais.",f3tag:"Ne s'écaille jamais",
+    f3t:"Technologie d'encre UV Transparente",f3d:"Nos encres à durcissement UV se lient de façon permanente au substrat et ne contiennent aucun agent fluorescent — exactement comme un vrai billet en polymère. Sous une lampe noire, le billet reste totalement sombre. Les imitations bon marché brillent et se trahissent immédiatement. Les nôtres, jamais.",f3tag:"Ne s'écaille jamais · Lampe noire",
     f4t:"Relief Intaglio Simulé",f4d:"Grâce à la surpression thermique, les zones foncées présentent une rugosité palpable. Passez l'ongle dessus : vous sentirez les rainures comme sur un vrai billet.",f4tag:"Texture palpable",
     f5t:"Micro-caractères",f5d:"Le micro-texte caché dans les bordures reste net et lisible même sous une loupe x10 — aucune bavure.",f5tag:"Loupe x10",
     optEye:"III. Optiques & Fenêtres",optTitle:"Précision Laser des Éléments de Sécurité",
@@ -1150,7 +1154,7 @@ const T={
     testEye:"V. Validation Qualité",testTitle:"Tests de terrain — À chaque lot",
     testDesc:"Avant expédition, chaque lot subit une batterie de tests rigoureux pour garantir qualité, durabilité et performance sur le plateau.",
     tt1:"Test d'immersion",td1:"Immersion complète 12 heures. Encre intacte. Le billet reste sec au toucher après essuyage.",tr1:"Réussi — immersion 12h",
-    tt2:"Test lumière UV",td2:"Sous une lampe UV 365nm, le billet reste sombre (ne brille pas comme du papier), les fibres fluorescentes s'illuminent correctement.",tr2:"Réussi — UV 365nm",
+    tt2:"Test lampe noire",td2:"Sous une lampe UV 365nm, le billet reste totalement sombre — aucune fluorescence. C'est exactement le comportement du vrai billet canadien en polymère. Les prop bills bon marché brillent en bleu et se trahissent immédiatement.",tr2:"Réussi — Zéro fluorescence",
     tt3:"Test d'usure et durabilité",td3:"Manipulation répétée, pliage et frottement. Tous les éléments restent intacts après 500+ cycles — essentiel pour les tournages multiprise.",tr3:"Réussi — 500+ cycles",
     diagEye:"Diagramme Technique",diagTitle:"Détail des Éléments de Sécurité",diagDesc:"Un aperçu détaillé des caractéristiques de sécurité intégrées sur notre prop de 20 $.",ctaH:"Prêt à commander ?",ctaP:"Choisissez votre pack, construisez votre mix de coupures et recevez les billets de prop les plus réalistes disponibles.",
     ctaShop:"Commander",ctaTg:"Questions ? Contacter sur Telegram"
