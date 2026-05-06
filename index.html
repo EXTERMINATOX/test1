@@ -106,18 +106,23 @@
             <div class="logo-name" id="h-logo-name" style="color:var(--gold-primary, #D4AF37);">PROP CANADA</div>
             <div class="logo-sub" id="h-logo-sub" style="font-size:0.6rem;color:var(--text-muted, #a0a0a0);letter-spacing:2px;text-transform:uppercase;">Premium Custom Currency</div>
         </a>
+        <div class="nav-menu-wrapper" id="navMenu">
         <ul class="nav-links">
             <li><a href="index.html#boutique" id="hero-shop-lbl" class='active'>Shop</a></li>
             <li><a href="pages/product-info.html" id="hero-product-lbl" >Product Info</a></li>
             <li><a href="pages/delivery-info.html" id="hero-delivery-lbl" >Delivery Info</a></li>
             <li><a href="pages/reviews.html" id="hero-reviews-lbl" >Reviews</a></li>
         </ul>
-        <div style="display:flex; gap:15px; align-items:center;">
+        <div class="lang-tog-wrapper">
             <div class="lang-tog">
                 <button class="lb active" id="lang-en" onclick="setLang('en')">EN</button>
                 <button class="lb" id="lang-fr" onclick="setLang('fr')">FR</button>
             </div>
         </div>
+    </div>
+    <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle Menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12" class="line1"></line><line x1="3" y1="6" x2="21" y2="6" class="line2"></line><line x1="3" y1="18" x2="21" y2="18" class="line3"></line></svg>
+    </button>
     </nav>
     <header class="hero">
         <video autoplay loop muted playsinline class="hero-video">

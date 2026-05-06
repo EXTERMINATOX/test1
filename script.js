@@ -1335,3 +1335,11 @@ function initSocialProof() {
 }
 
 document.addEventListener('DOMContentLoaded', () => { document.querySelectorAll('video').forEach(v => { v.muted = true; v.volume = 0; v.addEventListener('volumechange', function() { this.muted = true; this.volume = 0; }); }); });
+
+
+function toggleMobileMenu() {
+    const menu = document.getElementById("navMenu");
+    const btn = document.querySelector(".mobile-menu-btn");
+    if(menu) menu.classList.toggle("open");
+    if(btn) btn.classList.toggle("open");
+}
