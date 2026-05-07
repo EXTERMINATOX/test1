@@ -556,20 +556,15 @@ footer {
 .m-title { font-family: var(--font-heading); font-size: 1.5rem; color: var(--text-light); }
 .m-sub { font-size: 0.9rem; color: var(--text-muted); margin-top: 5px; }
 
-.modal-x, .modal-back {
+.modal-x {
     background: transparent;
     border: none;
     color: var(--text-muted);
     font-size: 1.5rem;
     cursor: pointer;
-    transition: all 0.3s ease;
-    padding: 0;
-    line-height: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    transition: color 0.3s ease;
 }
-.modal-x:hover, .modal-back:hover { color: var(--gold-primary); transform: scale(1.1); }
+.modal-x:hover { color: var(--gold-primary); }
 
 .modal-bd { padding: 20px; }
 
@@ -595,17 +590,6 @@ footer {
 .btb-num { font-weight: bold; color: var(--text-light); }
 .btb-num.complete { color: var(--gold-primary); }
 .btb-num.over { color: #ff4444; }
-
-.face-value-builder {
-    font-weight: 600;
-    color: var(--gold-primary);
-    text-align: center;
-    padding: 10px 14px;
-    background: rgba(212,175,55,0.05);
-    border-radius: 8px;
-    margin-top: 10px;
-    border: 1px solid rgba(212,175,55,0.1);
-}
 
 /* Buttons inside Modals */
 .btn-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; }
@@ -681,72 +665,16 @@ textarea.fi { resize: vertical; min-height: 80px; }
 .ship-stat-s { font-size: 0.85rem; color: var(--text-muted); }
 
 /* Crypto Guide & Converter */
-/* ── Crypto Guide Toggle Button ── */
-.crypto-guide-toggle {
-  width: 100%;
-  padding: 16px 18px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  cursor: pointer;
-  border-radius: 10px;
-  margin-bottom: 12px;
-  border: 2px solid rgba(212,175,55,0.6);
-  background: linear-gradient(135deg, rgba(212,175,55,0.12), rgba(212,175,55,0.05));
-  color: var(--text-light);
-  position: relative;
-  overflow: hidden;
-  transition: border-color .25s, background .25s;
-  animation: guideGlow 2.5s ease-in-out infinite;
-}
-.crypto-guide-toggle::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg, transparent, rgba(212,175,55,0.08), transparent);
-  animation: guideShimmer 2.5s infinite;
-}
-@keyframes guideGlow {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(212,175,55,0.0), 0 2px 12px rgba(212,175,55,0.15); }
-  50%       { box-shadow: 0 0 0 4px rgba(212,175,55,0.12), 0 4px 20px rgba(212,175,55,0.3); }
-}
-@keyframes guideShimmer {
-  0%   { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
-}
-.crypto-guide-toggle:hover {
-  border-color: #D4AF37;
-  background: linear-gradient(135deg, rgba(212,175,55,0.2), rgba(212,175,55,0.08));
-}
-.cgt-left { display: flex; align-items: center; gap: 12px; text-align: left; }
-.cgt-ico { font-size: 1.5rem; line-height: 1; }
-.cgt-title { font-weight: 700; font-size: .95rem; color: #D4AF37; letter-spacing: .02em; }
-.cgt-sub { font-size: .75rem; color: #aaa; margin-top: 3px; }
-.cgt-arrow { font-size: 1.2rem; color: #D4AF37; transition: transform .3s; flex-shrink: 0; }
-.cgt-arrow.open { transform: rotate(180deg); }
-.crypto-guide-body { display: none; background: #0a0a0a; border: 1px solid rgba(212,175,55,0.2); padding: 20px; border-radius: 10px; margin-bottom: 20px; font-size: 0.85rem; color: var(--text-muted); }
+.crypto-guide-toggle { background: #151515; border: 1px solid rgba(255,255,255,0.1); width: 100%; padding: 15px; color: var(--text-light); display: flex; justify-content: space-between; cursor: pointer; border-radius: 8px; margin-bottom: 10px; }
+.crypto-guide-body { display: none; background: #0a0a0a; border: 1px solid rgba(255,255,255,0.1); padding: 20px; border-radius: 8px; margin-bottom: 20px; font-size: 0.85rem; color: var(--text-muted); }
 .crypto-guide-body.open { display: block; }
-
-/* ── Guide sections ── */
-.guide-section { margin-bottom: 18px; }
-.guide-section-title { font-weight: 700; font-size: .85rem; text-transform: uppercase; letter-spacing: .08em; color: #D4AF37; margin-bottom: 12px; }
-.guide-step { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 12px; }
-.gs-num { background: var(--gold-gradient); color: #000; border-radius: 50%; width: 26px; height: 26px; min-width: 26px; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: .8rem; }
-.gs-body { flex: 1; }
-.gs-title { font-weight: 700; font-size: .83rem; color: #e0e0e0; margin-bottom: 3px; }
-.gs-desc { font-size: .8rem; color: var(--text-muted); line-height: 1.55; }
-.gs-warning { display: flex; gap: 8px; align-items: flex-start; padding: 8px 10px; border-radius: 6px; background: rgba(239,68,68,.08); border: 1px solid rgba(239,68,68,.2); margin-bottom: 6px; }
-.gs-warning-text { font-size: .8rem; color: #fca5a5; line-height: 1.5; }
-.gs-tip { display: flex; gap: 8px; align-items: flex-start; padding: 8px 12px; background: rgba(212,175,55,.07); border-left: 3px solid #D4AF37; border-radius: 0 6px 6px 0; }
-.gs-tip-text { font-size: .78rem; color: #c8b880; line-height: 1.5; }
-.gs-tag { display: inline-block; background: rgba(212,175,55,.1); border: 1px solid rgba(212,175,55,.3); border-radius: 20px; padding: 4px 12px; font-size: .75rem; color: #D4AF37; margin-top: 6px; }
 .cbox, .intbox, .convbox { background: #151515; border: 1px solid rgba(212,175,55,0.2); padding: 15px; border-radius: 8px; margin-bottom: 15px; text-align: center; }
 .caddr { font-family: monospace; background: #000; padding: 10px; border-radius: 4px; color: var(--gold-primary); word-break: break-all; margin: 10px 0; }
 .qrwrap img { max-width: 150px; border-radius: 8px; border: 1px solid var(--gold-primary); }
 
 .info-wrap { position: relative; display: inline-flex; align-items: center; gap: 5px; }
 .info-btn { background: var(--gold-primary); color: #000; border: none; border-radius: 50%; width: 16px; height: 16px; font-size: 10px; font-weight: bold; cursor: pointer; }
-.tooltip-popup { display: none; position: fixed; background: #111; border: 1px solid var(--gold-primary); color: var(--text-light); padding: 12px 14px; border-radius: 8px; width: 260px; font-size: 0.8rem; z-index: 999999; box-shadow: 0 8px 32px rgba(0,0,0,0.6), 0 0 0 1px rgba(212,175,55,0.2); line-height:1.5; pointer-events:none; }
+.tooltip-popup { display: none; position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); background: #111; border: 1px solid var(--gold-primary); color: var(--text-light); padding: 10px; border-radius: 6px; width: 250px; font-size: 0.8rem; z-index: 100; margin-bottom: 10px; }
 .tooltip-popup.open { display: block; }
 
 /* Promo */
@@ -1247,3 +1175,34 @@ textarea.fi { resize: vertical; min-height: 80px; }
 
 
 
+
+@media (max-width: 850px) {
+  .social-proof-popup {
+    top: 70px !important;
+    bottom: auto !important;
+    left: 50% !important;
+    transform: translateX(-50%) translateY(-120px);
+    width: 92% !important;
+    max-width: 420px !important;
+    padding: 9px 14px !important;
+    gap: 10px !important;
+    border-radius: 8px !important;
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s ease !important;
+  }
+  .social-proof-popup.show {
+    transform: translateX(-50%) translateY(0) !important;
+    opacity: 1 !important;
+  }
+  .social-proof-popup .spp-icon {
+    width: 28px !important;
+    height: 28px !important;
+    font-size: 0.85rem !important;
+  }
+  .social-proof-popup .spp-title {
+    font-size: 0.78rem !important;
+    line-height: 1.25 !important;
+  }
+  .social-proof-popup .spp-time {
+    font-size: 0.68rem !important;
+  }
+}
