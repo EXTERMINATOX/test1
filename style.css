@@ -1206,3 +1206,93 @@ textarea.fi { resize: vertical; min-height: 80px; }
     font-size: 0.68rem !important;
   }
 }
+
+/* ── PREMIUM TOOLTIPS (DARK GOLD) ── */
+.tooltip-container {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+.info-icon {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 18px;
+    height: 18px;
+    font-size: 12px;
+    font-family: var(--font-body);
+    font-weight: 700;
+    color: var(--gold-primary);
+    background-color: rgba(212, 175, 55, 0.15);
+    border: 1.5px solid rgba(212, 175, 55, 0.5);
+    border-radius: 50%;
+    cursor: help;
+    transition: all 0.3s ease;
+    margin-left: 4px;
+}
+
+.info-icon:hover {
+    background-color: var(--gold-primary);
+    color: #000;
+    box-shadow: 0 0 12px rgba(212, 175, 55, 0.6);
+    transform: scale(1.1);
+}
+
+.tooltip-box {
+    visibility: hidden;
+    opacity: 0;
+    width: 260px;
+    background: rgba(15, 15, 15, 0.98);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--gold-primary);
+    color: var(--text-light);
+    text-align: left;
+    padding: 14px;
+    border-radius: 8px;
+    position: absolute;
+    top: calc(100% + 10px);
+    bottom: auto;
+    left: 50%;
+    transform: translateX(-50%) translateY(-10px);
+    z-index: 10000;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.9);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    pointer-events: none;
+}
+
+.tooltip-container:hover .tooltip-box {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+.tooltip-box::after {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    top: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 6px;
+    border-style: solid;
+    border-color: transparent transparent rgba(212, 175, 55, 0.25) transparent;
+}
+
+.tooltip-box.open { visibility: visible; opacity: 1; transform: translateY(0); }
+
+.tooltip-title {
+    color: var(--gold-primary);
+    font-weight: 600;
+    margin-bottom: 6px;
+    font-size: 0.85rem;
+}
+
+.tooltip-box ul {
+    margin: 8px 0 0;
+    padding-left: 18px;
+    color: var(--text-muted);
+}
+.tooltip-box ul li {
+    margin-bottom: 4px;
+}

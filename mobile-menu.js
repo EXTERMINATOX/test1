@@ -2,118 +2,177 @@
 
 function toggleMobileMenu() {
     const menu = document.getElementById("navMenu");
-    const btn = document.querySelector(".mobile-menu-btn");
+    const btn  = document.querySelector(".mobile-menu-btn");
     const overlay = document.getElementById("mobileOverlay");
-    
-    if (menu) menu.classList.toggle("open");
-    if (btn) btn.classList.toggle("open");
+    if (menu)    menu.classList.toggle("open");
+    if (btn)     btn.classList.toggle("open");
     if (overlay) overlay.classList.toggle("open");
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    // Close the menu when any nav link is clicked
-    const navLinks = document.querySelectorAll('.nav-links a');
-    navLinks.forEach(link => {
+
+    // ── Close nav when a link is clicked ──
+    document.querySelectorAll('.nav-links a').forEach(link => {
         link.addEventListener('click', () => {
             const menu = document.getElementById("navMenu");
-            if (menu && menu.classList.contains("open")) {
-                toggleMobileMenu();
-            }
+            if (menu && menu.classList.contains("open")) toggleMobileMenu();
         });
     });
 
-    // ── MOBILE TOOLTIP TAP HANDLER ──
-    // Uses event delegation to capture taps reliably on mobile.
-    
-    // Create elements once
+    // ════════════════════════════════════════════════════════════════
+    //  UNIVERSAL TOOLTIP SYSTEM
+    //  Works on desktop (hover) AND mobile (tap).
+    //  The tooltip lives in <body> with position:fixed — it CANNOT
+    //  be clipped by any parent overflow or stacking context.
+    // ════════════════════════════════════════════════════════════════
+
+    // ── 1. Build the floating tooltip element once ──
+    const tip = document.createElement('div');
+    tip.id = 'smart-tooltip';
+    Object.assign(tip.style, {
+        display:          'none',
+        position:         'fixed',
+        width:            '260px',
+        background:       'rgba(15,15,15,0.98)',
+        backdropFilter:   'blur(14px)',
+        WebkitBackdropFilter: 'blur(14px)',
+        border:           '1px solid #D4AF37',
+        borderRadius:     '10px',
+        padding:          '14px',
+        color:            '#f5f5f5',
+        fontSize:         '0.88rem',
+        lineHeight:       '1.6',
+        zIndex:           '9999999',
+        boxShadow:        '0 15px 40px rgba(0,0,0,0.9)',
+        fontFamily:       "'Inter',sans-serif",
+        pointerEvents:    'auto',
+        transition:       'opacity 0.15s ease',
+        opacity:          '0'
+    });
+    document.body.appendChild(tip);
+
+    // ── Mobile backdrop ──
     const backdrop = document.createElement('div');
-    backdrop.id = 'mobile-tooltip-backdrop';
+    backdrop.id = 'smart-tooltip-backdrop';
     Object.assign(backdrop.style, {
-        display: 'none',
-        position: 'fixed',
-        inset: '0',
-        zIndex: '999998',
-        background: 'rgba(0,0,0,0.55)',
-        backdropFilter: 'blur(3px)',
-        '-webkit-backdrop-filter': 'blur(3px)'
+        display:    'none',
+        position:   'fixed',
+        inset:      '0',
+        zIndex:     '9999998',
+        background: 'rgba(0,0,0,0.5)'
     });
-
-    const floatingBox = document.createElement('div');
-    floatingBox.id = 'mobile-tooltip-float';
-    Object.assign(floatingBox.style, {
-        display: 'none',
-        position: 'fixed',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, -50%)',
-        width: '88vw',
-        maxWidth: '360px',
-        background: 'rgba(15, 15, 15, 0.98)',
-        backdropFilter: 'blur(16px)',
-        '-webkit-backdrop-filter': 'blur(16px)',
-        border: '1px solid var(--gold-primary, #D4AF37)',
-        borderRadius: '12px',
-        padding: '24px 20px',
-        color: '#f5f5f5',
-        fontSize: '0.95rem',
-        lineHeight: '1.6',
-        zIndex: '999999',
-        boxShadow: '0 20px 60px rgba(0,0,0,0.9)',
-        fontFamily: "'Inter', sans-serif",
-        textAlign: 'center'
-    });
-
-    // Only append on first use or at load
     document.body.appendChild(backdrop);
-    document.body.appendChild(floatingBox);
 
-    function closeTooltip() {
-        floatingBox.style.display = 'none';
-        backdrop.style.display = 'none';
-        floatingBox.innerHTML = '';
+    let hideTimer = null;
+
+    function showTip(html, anchorEl) {
+        clearTimeout(hideTimer);
+        tip.innerHTML = html;
+
+        const isMobile = window.innerWidth <= 850;
+
+        if (isMobile) {
+            // ── MOBILE: center on screen ──
+            Object.assign(tip.style, {
+                width:     '88vw',
+                maxWidth:  '360px',
+                top:       '50%',
+                left:      '50%',
+                transform: 'translate(-50%,-50%)'
+            });
+            backdrop.style.display = 'block';
+
+            // Add close button
+            const x = document.createElement('button');
+            x.textContent = '✕';
+            Object.assign(x.style, {
+                position:     'absolute',
+                top:          '10px',
+                right:        '12px',
+                background:   'transparent',
+                border:       'none',
+                color:        '#aaa',
+                fontSize:     '1.1rem',
+                cursor:       'pointer',
+                lineHeight:   '1',
+                padding:      '0'
+            });
+            x.addEventListener('click', hideTip);
+            tip.appendChild(x);
+        } else {
+            // ── DESKTOP: position near the icon ──
+            tip.style.width    = '260px';
+            tip.style.maxWidth = '260px';
+            tip.style.transform = '';
+            backdrop.style.display = 'none';
+
+            const rect = anchorEl.getBoundingClientRect();
+            const vw   = window.innerWidth;
+            const vh   = window.innerHeight;
+            const TIP_W = 260;
+            const TIP_H = 160; // approximate
+
+            // Prefer below, fallback to above
+            let top  = rect.bottom + 10;
+            let left = rect.left + rect.width / 2 - TIP_W / 2;
+
+            // Don't go above viewport
+            if (top + TIP_H > vh) top = rect.top - TIP_H - 10;
+
+            // Clamp horizontally
+            if (left < 8)            left = 8;
+            if (left + TIP_W > vw - 8) left = vw - TIP_W - 8;
+
+            tip.style.top  = top  + 'px';
+            tip.style.left = left + 'px';
+        }
+
+        tip.style.display = 'block';
+        requestAnimationFrame(() => { tip.style.opacity = '1'; });
     }
 
-    backdrop.addEventListener('click', closeTooltip);
+    function hideTip() {
+        tip.style.opacity = '0';
+        backdrop.style.display = 'none';
+        hideTimer = setTimeout(() => { tip.style.display = 'none'; tip.innerHTML = ''; }, 150);
+    }
 
-    // Event Delegation
+    backdrop.addEventListener('click', hideTip);
+
+    // ── 2. DESKTOP — hover via event delegation ──
+    document.addEventListener('mouseover', (e) => {
+        if (window.innerWidth <= 850) return;
+        const icon = e.target.closest('.info-icon');
+        if (icon) {
+            const box = icon.closest('.tooltip-container')?.querySelector('.tooltip-box');
+            if (box) showTip(box.innerHTML, icon);
+        }
+    });
+
+    document.addEventListener('mouseout', (e) => {
+        if (window.innerWidth <= 850) return;
+        const leaving = e.target.closest('.tooltip-container');
+        const entering = e.relatedTarget?.closest?.('.tooltip-container, #smart-tooltip');
+        if (leaving && !entering) hideTip();
+    });
+
+    tip.addEventListener('mouseleave', hideTip);
+
+    // ── 3. MOBILE — tap via event delegation ──
     document.addEventListener('click', (e) => {
-        // Only active on mobile
         if (window.innerWidth > 850) return;
-
         const icon = e.target.closest('.info-icon');
         if (icon) {
             e.preventDefault();
             e.stopPropagation();
-
-            const originalBox = icon.closest('.tooltip-container')?.querySelector('.tooltip-box');
-            if (!originalBox) return;
-
-            floatingBox.innerHTML = originalBox.innerHTML;
-
-            const closeBtn = document.createElement('button');
-            closeBtn.textContent = '✕';
-            Object.assign(closeBtn.style, {
-                position: 'absolute',
-                top: '12px',
-                right: '15px',
-                background: 'rgba(255,255,255,0.1)',
-                border: 'none',
-                color: '#fff',
-                fontSize: '1.2rem',
-                cursor: 'pointer',
-                lineHeight: '1',
-                width: '30px',
-                height: '30px',
-                borderRadius: '50%',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center'
-            });
-            closeBtn.addEventListener('click', closeTooltip);
-            floatingBox.appendChild(closeBtn);
-
-            floatingBox.style.display = 'block';
-            backdrop.style.display = 'block';
+            const box = icon.closest('.tooltip-container')?.querySelector('.tooltip-box');
+            if (box) {
+                const isVisible = tip.style.display === 'block' && tip.style.opacity === '1';
+                if (isVisible) { hideTip(); return; }
+                showTip(box.innerHTML, icon);
+            }
+        } else if (!e.target.closest('#smart-tooltip')) {
+            hideTip();
         }
     });
 });
